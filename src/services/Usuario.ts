@@ -27,7 +27,15 @@ const updateUsuario = async (usuarioId: string, data: Partial<IUsuario>): Promis
 };
 
 const deleteUsuario = async (usuarioId: string): Promise<IUsuarioModel | null> => {
-    return await Usuario.findByIdAndDelete(usuarioId);
+    return await Usuario.findByIdAndUpdate(usuarioId, 
+        { IsActive: false }, // Soft delete by setting IsActive to false
+        { new: true }); // Return the updated document
 };
 
-export default { createUsuario, getUsuario, getAllUsuarios, updateUsuario, deleteUsuario };
+const restoreUsuario = async (usuarioId: string): Promise<IUsuarioModel | null> => {
+    return await Usuario.findByIdAndUpdate(usuarioId,
+        { IsActive: true }, // Restore by setting IsActive to true
+        { new: true }); // Return the updated document
+}
+
+export default { createUsuario, getUsuario, getAllUsuarios, updateUsuario, deleteUsuario, restoreUsuario };

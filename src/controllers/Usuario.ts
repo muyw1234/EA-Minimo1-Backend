@@ -46,7 +46,6 @@ const updateUsuario = async (req: Request, res: Response, next: NextFunction) =>
 
 const deleteUsuario = async (req: Request, res: Response, next: NextFunction) => {
     const usuarioId = req.params.usuarioId;
-
     try {
         const usuario = await UsuarioService.deleteUsuario(usuarioId);
         return usuario ? res.status(201).json(usuario) : res.status(404).json({ message: 'not found' });
@@ -55,4 +54,14 @@ const deleteUsuario = async (req: Request, res: Response, next: NextFunction) =>
     }
 };
 
-export default { createUsuario, readUsuario, readAll, updateUsuario, deleteUsuario };
+const restoreUsuario = async (req: Request, res: Response, next: NextFunction) => {
+    const usuarioId = req.params.usuarioId; 
+    try {
+        const usuario = await UsuarioService.restoreUsuario(usuarioId);
+        return usuario ? res.status(200).json(usuario) : res.status(404).json({ message: 'not found' });
+    } catch (error) {
+        return res.status(500).json({ error });
+    }   
+}; 
+
+export default { createUsuario, readUsuario, readAll, updateUsuario, deleteUsuario, restoreUsuario };

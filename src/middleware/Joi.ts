@@ -32,7 +32,8 @@ export const Schemas = {
         update: Joi.object<IUsuario>({
             name: Joi.string().required(),
             email: Joi.string().email().required(),
-            password: Joi.string().min(6).required()
+            password: Joi.string().min(6).required(),
+            IsActive: Joi.boolean().optional()
         })
     },
     libreria: {
