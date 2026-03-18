@@ -31,6 +31,16 @@ const readAll = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 
+const getUsuarioLibros = async (req: Request, res: Response, next: NextFunction) => {
+    const usuarioId = req.params.usuarioId;
+    try {
+        const libros = await UsuarioService.getUsuarioLibros(usuarioId);
+        return libros ? res.status(200).json(libros) : res.status(404).json({ message: 'not found' });
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
+};
+
 const updateUsuario = async (req: Request, res: Response, next: NextFunction) => {
     const usuarioId = req.params.usuarioId;
     try {
@@ -62,4 +72,4 @@ const restoreUsuario = async (req: Request, res: Response, next: NextFunction) =
     }   
 }; 
 
-export default { createUsuario, readUsuario, readAll, updateUsuario, deleteUsuario, restoreUsuario };
+export default { createUsuario, readUsuario, readAll, getUsuarioLibros, updateUsuario, deleteUsuario, restoreUsuario };

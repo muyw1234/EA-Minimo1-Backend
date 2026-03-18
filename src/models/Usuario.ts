@@ -4,6 +4,7 @@ export interface IUsuario {
     name: string;
     email: string;
     password: string;
+    libros: mongoose.Types.ObjectId[] | string;
     IsDeleted?: boolean;
 }
 
@@ -14,6 +15,7 @@ const UsuarioSchema: Schema = new Schema(
         name: { type: String, required: true },
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
+        libros: [{ type: Schema.Types.ObjectId, ref: 'Libro', default: [] }],
         IsDeleted: { type: Boolean, default: false } 
     },
     {

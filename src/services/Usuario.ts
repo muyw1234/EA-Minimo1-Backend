@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import Usuario, { IUsuarioModel, IUsuario } from '../models/Usuario';
-
+import Libro from '../models/Libro';
 const createUsuario = async (data: Partial<IUsuario>): Promise<IUsuarioModel> => {
     const usuario = new Usuario({
         _id: new mongoose.Types.ObjectId(),
@@ -15,6 +15,10 @@ const getUsuario = async (usuarioId: string): Promise<IUsuarioModel | null> => {
 
 const getAllUsuarios = async (): Promise<IUsuarioModel[]> => {
     return await Usuario.find();
+};
+
+const getUsuarioLibros = async (usuarioId: string): Promise<IUsuarioModel[] | null> => {
+    return await Libro.find({ owner: usuarioId, IsDeleted: false });
 };
 
 const updateUsuario = async (usuarioId: string, data: Partial<IUsuario>): Promise<IUsuarioModel | null> => {
@@ -38,4 +42,4 @@ const restoreUsuario = async (usuarioId: string): Promise<IUsuarioModel | null> 
         { new: true }); // Return the updated document
 }
 
-export default { createUsuario, getUsuario, getAllUsuarios, updateUsuario, deleteUsuario, restoreUsuario };
+export default { createUsuario, getUsuario, getAllUsuarios, getUsuarioLibros, updateUsuario, deleteUsuario, restoreUsuario };

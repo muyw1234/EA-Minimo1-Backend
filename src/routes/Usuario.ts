@@ -101,6 +101,27 @@ router.get('/', controller.readAll);
 
 /**
  * @openapi
+ * /usuarios/{usuarioId}/libros:
+ *   get:
+ *     summary: Obtiene los libros de un usuario por ID
+ *     tags: [Usuarios]
+ *     parameters:
+ *       - in: path
+ *         name: usuarioId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ObjectId del usuario
+ *     responses:
+ *       200:
+ *         description: OK
+ *       404:
+ *         description: No encontrado
+ */
+router.get('/:usuarioId/libros', controller.getUsuarioLibros);
+
+/**
+ * @openapi
  * /usuarios/{usuarioId}:
  *   put:
  *     summary: Actualiza un usuario por ID
