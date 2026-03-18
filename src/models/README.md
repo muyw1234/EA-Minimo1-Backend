@@ -6,6 +6,7 @@ class Post{
 + bookId : string
 + description : string
 + status : string
++ price : number
 +imageUrl : string
 }
 
