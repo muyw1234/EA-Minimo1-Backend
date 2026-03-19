@@ -54,15 +54,15 @@ const router = express.Router();
  *         name:
  *           type: string
  *           description: Nombre del usuario
- *           example: "Judit"
+ *           example: "User X"
  *         email:
  *           type: string
  *           description: Correo electrónico del usuario
- *           example: "judit@gmail.com"
+ *           example: "uX@gmail.com"
  *         password:
  *           type: string
  *           description: Contraseña del usuario
- *           example: "password123"
+ *           example: "123456789"
  *         libros:
  *           type: array
  *           description: Lista de IDs de libros asociados al usuario

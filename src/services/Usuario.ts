@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import Usuario, { IUsuarioModel, IUsuario } from '../models/Usuario';
-import Libro from '../models/Libro';
 
 const createUsuario = async (data: Partial<IUsuario>): Promise<IUsuarioModel> => {
     const usuario = new Usuario({
@@ -32,11 +31,7 @@ const updateUsuario = async (usuarioId: string, data: Partial<IUsuario>): Promis
 };
 
 const deleteUsuario = async (usuarioId: string): Promise<IUsuarioModel | null> => {
-    return await Usuario.findByIdAndUpdate(
-        usuarioId,
-        { IsDeleted: true }, // Soft delete by setting IsDeleted to true
-        { new: true }
-    ); // Return the updated document
+    return await Usuario.findByIdAndDelete(usuarioId);
 };
 
 export default { createUsuario, getUsuario, getAllUsuarios, getAllUsuarios_NOT_Deleted, updateUsuario, deleteUsuario };

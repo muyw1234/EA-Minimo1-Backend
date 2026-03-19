@@ -34,9 +34,9 @@ export const Schemas = {
             IsDeleted: Joi.boolean().optional()
         }),
         update: Joi.object<IUsuario>({
-            name: Joi.string().required(),
-            email: Joi.string().email().required(),
-            password: Joi.string().min(6).required(),
+            name: Joi.string().optional(),
+            email: Joi.string().email().optional(),
+            password: Joi.string().min(6).optional(),
             IsDeleted: Joi.boolean().optional()
         })
     },
