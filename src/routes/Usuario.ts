@@ -39,7 +39,7 @@ const router = express.Router();
  *           example:
  *             - "65f1c2a1b2c3d4e5f6789012"
  *             - "65f1c2a1b2c3d4e5f6789013"
- *         isDeleted:
+ *         IsDeleted:
  *           type: boolean
  *           description: Indica si el usuario ha sido eliminado lógicamente
  *           example: false
