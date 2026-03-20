@@ -37,6 +37,7 @@ export const Schemas = {
             name: Joi.string().optional(),
             email: Joi.string().email().optional(),
             password: Joi.string().min(6).optional(),
+            libros: Joi.array().items(Joi.string().optional()),
             IsDeleted: Joi.boolean().optional()
         })
     },
