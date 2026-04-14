@@ -6,6 +6,7 @@ import { ILibro } from '../models/Libro';
 import { IEvento } from '../models/Evento';
 import { IChat } from '../models/Chat';
 import { IMensaje } from '../models/Mensaje';
+import { IHistorial } from '../models/Historial';
 import Logging from '../library/Logging';
 import { IAutor } from '../models/Autor';
 import { isBindingName } from 'typescript';
@@ -39,6 +40,20 @@ export const Schemas = {
             password: Joi.string().min(6).optional(),
             libros: Joi.array().items(Joi.string().optional()),
             IsDeleted: Joi.boolean().optional()
+        })
+    },
+    Historial: {
+        create: Joi.object<IHistorial>({
+            libro: Joi.string().required(),
+            accion: Joi.string().required(),
+            descripcion: Joi.string().required(),
+            fecha: Joi.date().required()
+        }),
+        update: Joi.object<IHistorial>({
+            libro: Joi.string().required(),
+            accion: Joi.string().optional(),
+            descripcion: Joi.string().optional(),
+            fecha: Joi.date().optional()
         })
     },
     Autor: {

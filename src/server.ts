@@ -10,6 +10,7 @@ import libroRoutes from './routes/Libro';
 import autorRoutes from './routes/Autor';
 import eventoRoutes from './routes/Evento';
 import chatRoutes from './routes/Chat';
+import historialRouter from './routes/Historial';
 import mensajeRoutes from './routes/Mensaje';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger';
@@ -50,6 +51,7 @@ const StartServer = () => {
     /** Routes */
     router.use('/usuarios', usuarioRoutes);
     router.use('/librerias', libreriaRoutes);
+    router.use('/Historial', historialRouter);
     router.use('/libros', libroRoutes);
     router.use('/autores', autorRoutes);
     router.use('/eventos', eventoRoutes);
